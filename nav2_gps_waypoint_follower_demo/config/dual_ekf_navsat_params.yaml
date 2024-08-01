@@ -8,24 +8,30 @@ ekf_filter_node_odom:
     debug: false
     publish_tf: true
 
-    map_frame: map
-    odom_frame: odom
+    #map_frame: map              # Defaults to "map" if unspecified
+    #odom_frame: odom            # Defaults to "odom" if unspecified
     base_link_frame: base_footprint # the frame id used by the turtlebot's diff drive plugin
     world_frame: odom
 
-    odom0: odom
+    # x, y, z
+    #roll, pitch, yaw
+    #vx, vy, vz
+    #vroll, vpitch, vyaw
+    #ax, ay, az
+
+    odom0: odometry/unfiltered
     odom0_config: [false, false, false,
                   false, false, false,
-                  true,  true,  true,
-                  false, false, true,
+                  true,  true,  false,
+                  false, false, false,
                   false, false, false]
     odom0_queue_size: 10
     odom0_differential: false
     odom0_relative: false
 
-    imu0: imu
+    imu0: imu/orientation
     imu0_config: [false, false, false,
-                  false,  false,  true,
+                  true,  true,  true,
                   false, false, false,
                   false,  false,  false,
                   false,  false,  false]
@@ -60,16 +66,16 @@ ekf_filter_node_map:
     debug: false
     publish_tf: true
 
-    map_frame: map
-    odom_frame: odom
+    #map_frame: map              # Defaults to "map" if unspecified
+    #odom_frame: odom            # Defaults to "odom" if unspecified
     base_link_frame: base_footprint # the frame id used by the turtlebot's diff drive plugin
     world_frame: map
 
-    odom0: odom
+    odom0: odometry/unfiltered
     odom0_config: [false, false, false,
                   false, false, false,
-                  true,  true,  true,
-                  false, false, true,
+                  true,  true,  false,
+                  false, false, false,
                   false, false, false]
     odom0_queue_size: 10
     odom0_differential: false
@@ -85,9 +91,9 @@ ekf_filter_node_map:
     odom1_differential: false
     odom1_relative: false
 
-    imu0: imu
+    imu0: imu/orientation
     imu0_config: [false, false, false,
-                  false,  false,  true,
+                  true,  true,  true,
                   false, false, false,
                   false,  false,  false,
                   false,  false,  false]

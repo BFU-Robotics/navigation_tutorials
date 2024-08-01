@@ -21,9 +21,9 @@ def generate_launch_description():
             package="swri_transform_util",
             executable="initialize_origin.py",
             name="initialize_origin",
-            remappings=[
-                ("fix", "gps/fix"),
-            ],
+            #remappings=[
+            #    ("fix", "gps/fix"),
+            #],
         ),
         launch_ros.actions.Node(
             package="tf2_ros",

@@ -7,11 +7,11 @@ enable_antialiasing: true
 show_displays: true
 show_status_bar: true
 show_capture_tools: true
-window_width: 1920
+window_width: 1440
 window_height: 1016
-view_scale: 0.564473748
-offset_x: -55.0469894
-offset_y: -4.65194941
+view_scale: 0.241684616
+offset_x: -3.32947159
+offset_y: -1.87460196
 use_latest_transforms: true
 background: "#a0a0a4"
 image_transport: raw
@@ -22,9 +22,12 @@ displays:
       visible: true
       collapsed: false
       custom_sources:
-        []
+        - base_url: https://tile.openstreetmap.org/${zoom}/${x}/${y}.png
+          max_zoom: 30
+          name: 111
+          type: wmts
       bing_api_key: ""
-      source: Bing Maps (terrain)
+      source: 111
   - type: mapviz_plugins/point_click_publisher
     name: new display
     config:
@@ -37,19 +40,19 @@ displays:
     config:
       visible: true
       collapsed: false
-      frame: base_link
+      frame: base_footprint
       color: "#00ff00"
       draw_style: arrows
       position_tolerance: 0
       buffer_size: 1
       static_arrow_sizes: true
-      arrow_size: 53
+      arrow_size: 106
   - type: mapviz_plugins/navsat
     name: new display
     config:
       visible: true
       collapsed: false
-      topic: /gps/fix
+      topic: fix
       color: "#55aaff"
       draw_style: points
       position_tolerance: 0
